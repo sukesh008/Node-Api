@@ -1,21 +1,22 @@
+import express from "express";
+import {
+  deleteMovie,
+  getMovies,
+  postMovie,
+  putMovie,
+  getMovie,
+} from "../Controllers/movies.js";
 
-import express from "express"
-import { deleteMovie, getMovies, postMovie, putMovie, } from "../Controllers/movies.js";
+const router = express.Router();
 
-const router =express.Router();
+router.post("/", postMovie);
 
-// CRUD - operations
+router.get("/", getMovies);
 
-// Create
-router.post('/',postMovie)
+router.get("/:id", getMovie);
 
-// Read
-router.get('/',getMovies)
+router.put("/:id", putMovie);
 
-// update
-router.put('/:id',putMovie)
+router.delete("/:id", deleteMovie);
 
-// delete
-router.delete('/:id',deleteMovie)
-
-export default router
+export default router;
